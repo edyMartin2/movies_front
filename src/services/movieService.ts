@@ -10,14 +10,14 @@ class Movies {
         return await axios.get(url).then(res => { return res.data }).catch(() => { return [] })
     }
 
-    async Save(Movie: MoviesType) {
+    async Save(Movie: MoviesType, id: string = "") {
 
         let data = JSON.stringify(Movie);
 
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: apiUrl,
+            url: id !== "" ? `${apiUrl}/${id}` : apiUrl,
             headers: {
                 'Content-Type': 'application/json'
             },

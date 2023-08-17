@@ -44,7 +44,7 @@ const Home = () => {
             return movies.map((i: MoviesType, k: number) => {
                 return (
                     <Grid key={k} item xs={4}>
-                        <CardHelper url={i.image} title={i.title} description={i.slug} userType="admin" id={String(i._id)}></CardHelper>
+                        <CardHelper url={i.image} title={i.title} description={i.slug} userType="admin" id={String(i._id)} information={i}></CardHelper>
                     </Grid>
                 )
             })

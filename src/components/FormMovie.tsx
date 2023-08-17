@@ -14,9 +14,10 @@ export default function FormMMovie({ id }: any) {
     const [director, setDirector] = useState<string>('')
 
     const [selected, setSelected] = useState<string[]>([])
-
+    const [platformsAct, setPlatformsAct] = useState<string>("")
 
     const SaveMovie = () => {
+
         let plataform = selected.map((i) => {
             let plt = {
                 _id: i
@@ -32,8 +33,11 @@ export default function FormMMovie({ id }: any) {
             platforms: plataform
         }
 
-        //console.log('loque se guardara ', data)
-        movie.Save(data).then(res => {
+        if (plataform.length === 0) {
+            delete data.platforms
+        }
+
+        movie.Save(data, id).then(res => {
             if (res.acknowledged) {
                 alert("Guardado")
                 setTitle('')
@@ -51,6 +55,13 @@ export default function FormMMovie({ id }: any) {
                     setTitle(res[0].title ? res[0].title : '')
                     setDirector(res[0].director ? res[0].director : '')
                     setImage(res[0].image ? res[0].image : '')
+                    let platformsAct: any = []
+                    res[0].platforms.map((i: any) => {
+                        let title = i.title
+                        platformsAct.push(title)
+                    })
+
+                    setPlatformsAct(platformsAct.join(','))
                 }
             })
         }
@@ -72,6 +83,7 @@ export default function FormMMovie({ id }: any) {
                     </Grid>
 
                     <Grid item xs={12}>
+                        <p>Plataformas actuales : {platformsAct}</p>
                         <SelectComponent selected={selected} setSelected={setSelected}></SelectComponent>
                     </Grid>
 

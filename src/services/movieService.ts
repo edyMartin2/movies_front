@@ -6,7 +6,8 @@ const apiUrl = "http://localhost:3000/movies"
 class Movies {
 
     async Get(id: string = ""): Promise<any> {
-        return await axios.get(apiUrl).then(res => { return res.data }).catch(() => { return [] })
+        const url = id !== "" ? `${apiUrl}/${id}` : apiUrl
+        return await axios.get(url).then(res => { return res.data }).catch(() => { return [] })
     }
 
     async Save(Movie: MoviesType) {

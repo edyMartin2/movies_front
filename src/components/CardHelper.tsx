@@ -7,14 +7,13 @@ import CardHelperType from '../types/CardHelperType';
 import Typography from '@mui/material/Typography';
 import { Button, ButtonGroup } from '@mui/material';
 import MovieService from "../services/movieService"
-
 const movieService = new MovieService()
 
 
 export default function CardHelper({ url, title, description, userType, id }: CardHelperType) {
 
     const DeleteAdminMovie = () => {
-        movieService.Delete(id).then(res => { console.log(res) })
+        movieService.Delete(id).then(res => { window.location.reload(); })
     }
 
     return (

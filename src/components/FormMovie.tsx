@@ -8,10 +8,11 @@ import Plataforms from '../types/PlataformsType';
 
 const movie = new Movies()
 
-export default function FormMMovie() {
+export default function FormMMovie({ id }: any) {
     const [title, setTitle] = useState<string>('')
     const [image, setImage] = useState<string>('')
     const [director, setDirector] = useState<string>('')
+
     const [selected, setSelected] = useState<string[]>([])
 
 
@@ -32,8 +33,28 @@ export default function FormMMovie() {
         }
 
         //console.log('loque se guardara ', data)
-        movie.Save(data).then(res => { console.log(res) })
+        movie.Save(data).then(res => {
+            if (res.acknowledged) {
+                alert("Guardado")
+                setTitle('')
+                setImage('')
+                setDirector('')
+                setSelected([])
+            }
+        })
     }
+
+    useState(() => {
+        if (id) {
+            movie.Get(id).then(res => {
+                if (res.length > 0) {
+                    setTitle(res[0].title ? res[0].title : '')
+                    setDirector(res[0].director ? res[0].director : '')
+                    setImage(res[0].image ? res[0].image : '')
+                }
+            })
+        }
+    })
     return (
         <>
             <Grid item xs={6}>

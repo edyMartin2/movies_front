@@ -6,6 +6,7 @@ import {
 import React from 'react';
 import { Home } from './views/Home';
 import { Add } from './views/Add'
+import { Update } from './views/Update';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
     path: "/add",
     element: <Add></Add>
   },
+  {
+    path: "/update/:id",
+    element: <Update></Update>
+  }
 ]);
 
 

@@ -1,6 +1,6 @@
 import axios from "axios"
 import MoviesType from "../types/MoviesType"
-import env from '../../env'
+import env from '../env'
 
 const apiUrl =  `${env.URL}/movies`
 

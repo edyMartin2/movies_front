@@ -1,7 +1,8 @@
 import axios from "axios"
 import MoviesType from "../types/MoviesType"
+import env from '../../env'
 
-const apiUrl = "http://localhost:3000/movies"
+const apiUrl =  `${env.URL}/movies`
 
 class Movies {
 

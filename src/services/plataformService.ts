@@ -1,6 +1,8 @@
 import axios from "axios"
+import env from '../../env'
 
-const apiUrl = "http://localhost:3000/plataforms"
+const apiUrl =  `${env.URL}/plataforms`
+
 
 class PlataformService {
 

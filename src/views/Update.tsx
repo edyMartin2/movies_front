@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react'
 import Movies from '../services/movieService';
 import { useState } from 'react';
 import NavBar from "../components/NavBar"
@@ -11,7 +12,18 @@ const movieService = new Movies()
 
 const Update = () => {
     const { id } = useParams();
-    
+
+    /**
+    * Efecto usado para verificar el login
+    */
+    useEffect(() => {
+        let isLoginValue = window.localStorage.getItem('isLogin')
+        let isLogin = isLoginValue !== null ? Boolean(isLoginValue) : false
+        if (isLogin === false) {
+            window.location.href = '/'
+        }
+    })
+
     return (<Box sx={{ flexGrow: 1 }}>
         <NavBar buttonTxt={'Regresar'} to={'/'}></NavBar>
         <Grid

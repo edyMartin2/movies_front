@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import SelectComponent from './SelectComponent';
+import SelectComponent from './SelectPlatform';
 import Movies from '../services/movieService';
 import MoviesType from '../types/MoviesType';
 import Plataforms from '../types/PlataformsType';

@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const movieService = new MovieService()
 
 
-const Home = () => {
+const Admin = () => {
     const [movies, setMovies] = useState<Array<MoviesType>>([])
     const [isLogin, setIsLogin] = useState<boolean>(false)
 
@@ -49,7 +49,7 @@ const Home = () => {
             return movies.map((i: MoviesType, k: number) => {
                 return (
                     <Grid key={k} item xs={4}>
-                        <CardHelper url={i.image} title={i.title} description={i.slug} userType={isLogin === true ? 'admin' : 'visitor'} id={String(i._id)} information={i}></CardHelper>
+                        <CardHelper url={i.image} title={i.title} description={i.slug} userType="admin" id={String(i._id)} information={i}></CardHelper>
                     </Grid>
                 )
             })
@@ -62,15 +62,17 @@ const Home = () => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            {!isLogin && (<NavBar buttonTxt={'Ingresar'} to={'/admin'}></NavBar>)}
+            {!isLogin && (<NavBar ></NavBar>)}
             {isLogin && (<NavBar buttonTxt={'Agregar nueva'} to={'/add'}></NavBar>)}
             <Grid container spacing={2} style={{ padding: "10px" }}>
-                <MoviesTemplate></MoviesTemplate>
+                <Grid item xs={4}>
+                    <FormLogin></FormLogin>
+                </Grid>
             </Grid>
         </Box>
     )
 }
 
 export {
-    Home
+    Admin
 }

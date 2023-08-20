@@ -31,11 +31,11 @@ class CommentService {
 
     }
 
-    async Get() {
+    async GetByMovie(id: string) {
         let config: AxiosRequestConfig = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: `${apiUrl}/comments`,
+            url: `${apiUrl}/comment/${id}`,
             headers: {
                 'Content-Type': 'application/json'
             }

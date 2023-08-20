@@ -22,7 +22,7 @@ const Comments = () => {
             alignItems="center"
             style={{ marginTop: '10px' }}
         >
-            <CommentBox></CommentBox>
+            <CommentBox id={id}></CommentBox>
         </Grid>
 
     </Box>)

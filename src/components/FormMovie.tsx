@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import SelectComponent from './SelectPlatform';
+import SelectPlatform from './SelectPlatform';
 import Movies from '../services/movieService';
 import MoviesType from '../types/MoviesType';
 import Plataforms from '../types/PlataformsType';
@@ -84,7 +84,7 @@ export default function FormMMovie({ id }: any) {
 
                     <Grid item xs={12}>
                         <p>Plataformas actuales : {platformsAct}</p>
-                        <SelectComponent selected={selected} setSelected={setSelected}></SelectComponent>
+                        <SelectPlatform selected={selected} setSelected={setSelected}></SelectPlatform>
                     </Grid>
 
                     <Grid item xs={12}>

@@ -64,7 +64,12 @@ const Admin = () => {
         <Box sx={{ flexGrow: 1 }}>
             {!isLogin && (<NavBar ></NavBar>)}
             {isLogin && (<NavBar buttonTxt={'Agregar nueva'} to={'/add'}></NavBar>)}
-            <Grid container spacing={2} style={{ padding: "10px" }}>
+            <Grid
+                container
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                style={{ marginTop: '10px' }}>
                 <Grid item xs={4}>
                     <FormLogin></FormLogin>
                 </Grid>

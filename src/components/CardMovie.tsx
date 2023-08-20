@@ -73,6 +73,16 @@ export default function CardHelper({ url, title, description, userType, id, info
 
                 </ButtonGroup>
             </CardActions>)}
+            {userType === 'visitor' && (<CardActions disableSpacing >
+                <ButtonGroup>
+                    <Link style={{ textDecoration: 'none' }} to={`/more/${id}`}>
+                        <Button >
+                            Ver Mas
+                        </Button>
+                    </Link>
+
+                </ButtonGroup>
+            </CardActions>)}
         </Card>
     );
 }

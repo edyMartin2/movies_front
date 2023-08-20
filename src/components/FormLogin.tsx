@@ -16,21 +16,23 @@ const FormLogin = () => {
     }
 
     return (
-        <Grid item xs={6}>
-            <Grid container spacing={2}>
-                <Grid item xs={12}>
-                    <TextField style={{ width: '100%' }} value={user} onChange={(e) => { setUser(e.target.value) }} id="user" label="Usuario" variant="outlined" />
-                </Grid>
+        <>
+            <Grid item xs={6}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <TextField style={{ width: '100%' }} value={user} onChange={(e) => { setUser(e.target.value) }} id="user" label="Usuario" variant="outlined" />
+                    </Grid>
 
-                <Grid item xs={12}>
-                    <TextField type='password' style={{ width: '100%' }} value={passworld} onChange={(e) => { setPassworld(e.target.value) }} id="pass" label="Contraseña" variant="outlined" />
-                </Grid>
+                    <Grid item xs={12}>
+                        <TextField type='password' style={{ width: '100%' }} value={passworld} onChange={(e) => { setPassworld(e.target.value) }} id="pass" label="Contraseña" variant="outlined" />
+                    </Grid>
 
-                <Grid item xs={12}>
-                    <Button onClick={() => { LoginAction() }}>Iniciar sesion</Button>
+                    <Grid item xs={12}>
+                        <Button onClick={() => { LoginAction() }}>Iniciar sesion</Button>
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
+        </>
     )
 }
 

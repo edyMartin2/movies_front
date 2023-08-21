@@ -2,12 +2,12 @@ import axios from "axios"
 import MoviesType from "../types/MoviesType"
 import env from '../env'
 
-const apiUrl =  `${env.URL}/movies`
+const apiUrl = `${env.URL}/movies`
 
 class Movies {
 
-    async Get(id: string = ""): Promise<any> {
-        const url = id !== "" ? `${apiUrl}/${id}` : apiUrl
+    async Get(id: string = "", page: number = 1): Promise<any> {
+        const url = id !== "" ? `${apiUrl}/${id}` : `${apiUrl}?page=${page}`
         return await axios.get(url).then(res => { return res.data }).catch(() => { return [] })
     }
 

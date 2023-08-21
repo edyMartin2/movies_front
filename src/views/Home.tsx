@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import NavBar from "../components/NavBar";
-import { TextField } from "@mui/material";
+import { TextField, Pagination } from "@mui/material";
 import FormLogin from "../components/FormLogin";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -26,15 +26,21 @@ const Home = () => {
     const [movies, setMovies] = useState<Array<MoviesType>>([])
     const [isLogin, setIsLogin] = useState<boolean>(false)
 
+    const GetMovies = (page: number = 1) => {
+        movieService.Get("", page).then(res => { setMovies(res) })
+    }
+
     useState(() => {
         let moviesLenght = movies.length
         let isLoginValue = window.localStorage.getItem('isLogin')
         setIsLogin(isLogin !== null ? Boolean(isLoginValue) : false)
 
         if (moviesLenght === 0) {
-            movieService.Get().then(res => { setMovies(res) })
+            GetMovies()
         }
     })
+
+
 
     /**
      * this function return an react component 
@@ -65,6 +71,11 @@ const Home = () => {
             {!isLogin && (<NavBar buttonTxt={'Ingresar'} to={'/admin'}></NavBar>)}
             {isLogin && (<NavBar buttonTxt={'Agregar nueva'} to={'/add'}></NavBar>)}
             <Grid container spacing={2} style={{ padding: "10px" }}>
+                <Grid item xs={12}>
+                    <Pagination count={10} showFirstButton showLastButton onChange={(e, k) => {
+                        GetMovies(k)
+                    }} />
+                </Grid>
                 <MoviesTemplate></MoviesTemplate>
             </Grid>
         </Box>

@@ -32,7 +32,7 @@ const Admin = () => {
         setIsLogin(isLogin !== null ? Boolean(isLoginValue) : false)
 
         if (moviesLenght === 0) {
-            movieService.Get().then(res => { setMovies(res) })
+            movieService.Get().then(res => { setMovies(res.movies) })
         }
     })
 

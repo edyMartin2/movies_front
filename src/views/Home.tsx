@@ -25,6 +25,7 @@ const movieService = new MovieService()
 const Home = () => {
     const [movies, setMovies] = useState<Array<MoviesType>>([])
     const [isLogin, setIsLogin] = useState<boolean>(false)
+    const [pagination, setPagination] = useState<number>(0)
 
 
     /**
@@ -32,7 +33,7 @@ const Home = () => {
      * @param page pagen number
      */
     const GetMovies = (page: number = 1) => {
-        movieService.Get("", page).then(res => { setMovies(res) })
+        movieService.Get("", page).then(res => { setMovies(res.movies); setPagination(res.pages) })
     }
 
     /**
@@ -80,7 +81,7 @@ const Home = () => {
             {isLogin && (<NavBar buttonTxt={'Agregar nueva'} to={'/add'}></NavBar>)}
             <Grid container spacing={2} style={{ padding: "10px" }}>
                 <Grid item xs={12}>
-                    <Pagination count={10} showFirstButton showLastButton onChange={(e, k) => {
+                    <Pagination count={pagination} showFirstButton showLastButton onChange={(e, k) => {
                         GetMovies(k)
                     }} />
                 </Grid>

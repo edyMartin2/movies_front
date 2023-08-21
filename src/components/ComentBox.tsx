@@ -53,14 +53,14 @@ const CommentBox = ({ id }: any) => {
 
     useEffect(() => {
         console.log("algo cambio")
-        if (allComments.length <= 0) {
-            commentService.GetByMovie(id).then(res => {
+        // if (allComments.length <= 0) {
+        commentService.GetByMovie(id).then(res => {
 
-                console.log("obteniendo datos")
-                setAllComments(res)
-            })
-        }
-    })
+            console.log("obteniendo datos")
+            setAllComments(res)
+        })
+        // }
+    }, [])
 
     return (
         <>

@@ -32,6 +32,7 @@ class CommentService {
     }
 
     async GetByMovie(id: string) {
+        // api/comment/:id
         let config: AxiosRequestConfig = {
             method: 'get',
             maxBodyLength: Infinity,
@@ -51,11 +52,12 @@ class CommentService {
             });
     }
 
-    async GetByFilter(id: string) {
+    async GetByFilter(movieId: string, platformId: string) {
+        //api/comments/platform/:id/movie/:movieId
         let config: AxiosRequestConfig = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: `${apiUrl}/comments/platform/${id}`,
+            url: `${apiUrl}/comments/platform/${platformId}/movie/${movieId}`,
             headers: {
                 'Content-Type': 'application/json'
             }

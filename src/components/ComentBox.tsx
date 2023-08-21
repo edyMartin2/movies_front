@@ -45,7 +45,7 @@ const CommentBox = ({ id }: any) => {
     }
 
     const getCommentsByPlatform = () => {
-        commentService.GetByFilter(filter[0]).then(res => {
+        commentService.GetByFilter(id, filter[0]).then(res => {
             setAllComments(res)
         })
     }
@@ -55,7 +55,8 @@ const CommentBox = ({ id }: any) => {
         console.log("algo cambio")
         if (allComments.length <= 0) {
             commentService.GetByMovie(id).then(res => {
-                console.log("obteniendo datos", res)
+
+                console.log("obteniendo datos")
                 setAllComments(res)
             })
         }

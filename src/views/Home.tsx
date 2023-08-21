@@ -26,10 +26,18 @@ const Home = () => {
     const [movies, setMovies] = useState<Array<MoviesType>>([])
     const [isLogin, setIsLogin] = useState<boolean>(false)
 
+
+    /**
+     * get all movies action
+     * @param page pagen number
+     */
     const GetMovies = (page: number = 1) => {
         movieService.Get("", page).then(res => { setMovies(res) })
     }
 
+    /**
+     * use state for get all movies
+     */
     useState(() => {
         let moviesLenght = movies.length
         let isLoginValue = window.localStorage.getItem('isLogin')
